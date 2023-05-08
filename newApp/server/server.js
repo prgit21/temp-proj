@@ -1,8 +1,16 @@
 const express = require('express')
 const { exec } = require("child_process");
 const app = express()
+var cors = require('cors')
 
-app.get('/lof',(req,res)=>{
+app.use(cors())
+
+var corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+app.get('/lof',cors(corsOptions),(req,res)=>{
     let ret=""
     exec("cd data && ls", (error, stdout, stderr) => {
         if (error) {
@@ -46,3 +54,4 @@ app.get('/device/:id',(req,res)=>{
 })
 
 app.listen(5002,()=>{console.log('server start port 5002')})
+app.use(cors)

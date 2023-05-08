@@ -1,1 +1,1 @@
-export const DashboardRoute = '/'
+export const DashboardRoute = '/lof' as const;

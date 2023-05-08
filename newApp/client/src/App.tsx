@@ -10,7 +10,7 @@ function App() {
   
   useEffect(()=>
   {
-    fetch('/api').then(
+    fetch('/lof').then(
       response =>response.json()
     ).then(
       data =>{
@@ -27,7 +27,7 @@ console.log(setBackend,'data')
     
     
     <Routes>    
-        <Route path="/DashBoard" element={<ButtonList/>} />            
+        <Route path="/" element={<ButtonList/>} />            
         <Route path="/DeviceDataDashBoard" element={<DeviceDataDashboard/>} />            
 
     </Routes>
