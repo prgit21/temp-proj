@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import './App.css'
+import ButtonList from './components/ButtonList';
 
 function App() {
   const [backend,setBackend] = useState([{}]);
@@ -15,9 +16,13 @@ function App() {
       }
     )
   },[])
-
+console.log(setBackend,'data')
   return (
-<h3>blank</h3>
+    
+    <>
+    <ButtonList/>
+    
+    </>
 
   )
 }
