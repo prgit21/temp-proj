@@ -42,8 +42,9 @@ export const DeviceDataDashboard = () => {
     const handleButtonClick = (deviceName: string) => {
       setCurrDevice(deviceName);  
       const xyz={id:deviceName}
-      navigate( `/DeviceData/${deviceName}`)
-      // return <DeviceData {...xyz}/>
+      console.log("ishaq",deviceName)
+      // navigate( `/DeviceData/${deviceName}`)
+      return <DeviceData {...xyz}/>
       
       
     }
@@ -61,10 +62,12 @@ export const DeviceDataDashboard = () => {
     <h1>List of Devices</h1>
       {data.map((d, index) => (
         <div key={index}>
-          <Button onClick={() => handleButtonClick(d)}>
+          {/* <Button onClick={() => handleButtonClick(d)}>
             {d}
           </Button>
-          {/* <Button onClick={() => deleteButton(index)}>Delete</Button> */}
+          <Button onClick={() => deleteButton(index)}>Delete</Button> */}
+
+          <a href={"http://localhost:5002/device/"+d}>{d}</a>
         </div>
       ))}
       {/* <Button onClick={addMoreButton}>Add Device</Button> */}

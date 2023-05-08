@@ -10,7 +10,8 @@ var corsOptions = {
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
-app.get('/lof',cors(corsOptions),(req,res)=>{
+app.get('/lof',cors(corsOptions),(req,
+    res)=>{
     let ret=""
     exec("cd data && ls", (error, stdout, stderr) => {
         if (error) {
@@ -54,4 +55,4 @@ app.get('/device/:id',(req,res)=>{
 })
 
 app.listen(5002,()=>{console.log('server start port 5002')})
-app.use(cors)
+app.use(cors())

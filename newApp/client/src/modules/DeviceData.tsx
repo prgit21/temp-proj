@@ -2,18 +2,17 @@ import axios from "axios";
 import { useEffect, useState } from "react"
 
 interface DeviceProps{
-    id:string
+    id?:string
 }
 
 
 export const DeviceData =({id}:DeviceProps)=>{
     const [data,setData]= useState(null);
-    const queryString = window.location.search;
+    console.log(id,'this ID')
     useEffect(()=>{
-        axios
-      .get(`http://127.0.0.1:5002/device/${id}`)
+    axios
+      .get("http://127.0.0.1:5002/device/device-1")
       .then(response => {
-        console.log("ishaq",queryString);
         console.log(response.data, 'showApiSuccess2');
         const res = response.data;
         setData(res);
@@ -22,10 +21,10 @@ export const DeviceData =({id}:DeviceProps)=>{
         // Handle error
         console.error(error,'logError');
       });
-    })
+    },[data])
     return (
         <>
-        <h3>{data}</h3>
+        {data}
         <h3>123 double chec</h3>
         </>
     )
