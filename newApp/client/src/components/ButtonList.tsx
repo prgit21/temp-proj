@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { Button } from '@mui/material';
+import {useNavigate} from 'react-router-dom'
+// import { DeviceDataDashboard } from '../modules/DeviceDataDashboard';
+
+
 
 const ButtonList: React.FC = () => {
   const [buttons, setButtons] = useState<string[]>(['Device 1', 'Device 2']);
@@ -8,10 +12,13 @@ const ButtonList: React.FC = () => {
     const newButton = `Device ${buttons.length + 1}`;
     setButtons([...buttons, newButton]);
   };
+const navigate = useNavigate();
+  
 
   const handleButtonClick = (button: string) => {
-    console.log(button, 'clicked');
-    // Perform any other actions
+    // navigate(DeviceDataDashboard)
+    console.log(navigate)
+    
   };
 
   const deleteButton = (index: number) => {

@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 
 import './App.css'
 import ButtonList from './components/ButtonList';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { DeviceDataDashboard } from './modules/DeviceDataDashboard';
 
 function App() {
   const [backend,setBackend] = useState([{}]);
@@ -20,8 +22,16 @@ console.log(setBackend,'data')
   return (
     
     <>
-    <ButtonList/>
+
+    <BrowserRouter>
     
+    
+    <Routes>    
+        <Route path="/DashBoard" element={<ButtonList/>} />            
+        <Route path="/DeviceDataDashBoard" element={<DeviceDataDashboard/>} />            
+
+    </Routes>
+  </BrowserRouter>
     </>
 
   )
