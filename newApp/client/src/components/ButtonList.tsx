@@ -1,23 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
+import axios from "axios";
 
 const ButtonList: React.FC = () => {
-  const [buttons, setButtons] = useState<string[]>(['Device 1', 'Device 2']);
-
+  const [buttons, setButtons] = useState<string[]>([]);
+  const [ran,setRan]=useState(Math.random())
   const addMoreButton = () => {
-    const newButton = `Device ${buttons.length + 1}`;
-    setButtons([...buttons, newButton]);
+    axios.get('http://localhost:5002/addDevice').then(function (res){
+    })
+    setRan(Math.random())
   };
 
   const handleButtonClick = (button: string) => {
-    console.log(button, 'clicked');
-    // Perform any other actions
+    console.log(button)
   };
 
-  const deleteButton = (index: number) => {
-    const updatedButtons = [...buttons];
-    updatedButtons.splice(index, 1);
-    setButtons(updatedButtons);
+  useEffect(()=>{
+    axios.get('http://localhost:5002/lof').then(function (res){
+      setButtons(res['data'])
+    })
+  },[ran])
+
+  const deleteButton = (index: string) => {
+    console.log('ishaq',index);
+    axios.get(`http://localhost:5002/removeDevice/${index}`).then(function (res){
+    })
+    setRan(Math.random())
   };
 
   return (
@@ -28,7 +36,7 @@ const ButtonList: React.FC = () => {
           <Button onClick={() => handleButtonClick(button)}>
             {button}
           </Button>
-          <Button onClick={() => deleteButton(index)}>Delete</Button>
+          <Button onClick={() => deleteButton(button)}>Delete</Button>
         </div>
       ))}
       <Button onClick={addMoreButton}>Add Device</Button>
