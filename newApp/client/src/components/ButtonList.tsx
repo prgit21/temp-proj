@@ -10,7 +10,7 @@ export const ButtonList: React.FC = () => {
   const [buttons, setButtons] = useState<string[]>([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5002/lof').then(function (res) {
+    axios.get('http://13.233.56.210:5002/lof').then(function (res) {
       setButtons(res['data'])
       const resp = res.data
       console.log(resp)
@@ -19,7 +19,7 @@ export const ButtonList: React.FC = () => {
 
 
   const addMoreButton = () => {
-    axios.get('http://localhost:5002/addDevice').then(function (res) {
+    axios.get('http://13.233.56.210:5002/addDevice').then(function (res) {
       console.log(res)
     })
     setRan(Math.random())
@@ -34,7 +34,7 @@ export const ButtonList: React.FC = () => {
 
   const deleteButton = (index: string) => {
     console.log('ishaq', index);
-    axios.get(`http://localhost:5002/removeDevice/${index}`).then(function (res) {
+    axios.get(`http://13.233.56.210:5002/removeDevice/${index}`).then(function (res) {
       console.log(res)
     })
     setRan(Math.random())
@@ -42,7 +42,7 @@ export const ButtonList: React.FC = () => {
 
   const fetch = (idex: any) => {
     console.log('entering idx', idex)
-    axios.get(`http://localhost:5002/device/${idex}`).then(function (res) { console.log(res, 'whatRes'); const time = res.data; alert(JSON.stringify(time)) })
+    axios.get(`http://13.233.56.210:5002/device/${idex}`).then(function (res) { console.log(res, 'whatRes'); const time = res.data; alert(JSON.stringify(time)) })
     console.log(idex, 'clogs123')
   }
 
@@ -57,7 +57,7 @@ export const ButtonList: React.FC = () => {
             {button}
           </Button>
           <Button onClick={() => deleteButton(button)}>Delete</Button>
-          <Button onClick={() => fetch(button)}>Fetch</Button>
+          <Button onClick={() => fetch(button)}>Quick Fetch</Button>
 
         </div>
       ))}

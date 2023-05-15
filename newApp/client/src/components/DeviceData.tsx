@@ -16,13 +16,13 @@ export const DeviceData = () => {
     console.log(setRan)
 
     useEffect(() => {
-        axios.get('http://localhost:5002/device/device-1')
+        axios.get('http://13.233.56.210:5002/device/device-1')
             .then(function (res) {
                 console.log(res.data, 'whatRes1');
             })
     }, [ran])
     useEffect(() => {
-        axios.get('http://localhost:5002/lof')
+        axios.get('http://13.233.56.210:5002/lof')
             .then(function (res) {
                 console.log(res.data, 'whatRes123');
             })
@@ -31,7 +31,7 @@ export const DeviceData = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        axios.get(`http://localhost:5002/device/${id}`).then(
+        axios.get(`http://13.233.56.210:5002/device/${id}`).then(
             (res) => {
                 setData(res.data);
             }
