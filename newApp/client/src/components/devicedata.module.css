@@ -1,0 +1,9 @@
+.subtitleContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.subtitle {
+    font-weight: 600;
+    min-width: 60px;
+}

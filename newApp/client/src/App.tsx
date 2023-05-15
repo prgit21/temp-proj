@@ -1,28 +1,32 @@
 import { useEffect, useState } from 'react'
 
 import './App.css'
-import ButtonList from './components/ButtonList';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ButtonList } from './components/ButtonList';
+import { DeviceData } from './components/DeviceData';
 
 function App() {
-  const [backend,setBackend] = useState([{}]);
-  
-  useEffect(()=>
-  {
+  const [backend, setBackend] = useState([{}]);
+
+  useEffect(() => {
     fetch('/api').then(
-      response =>response.json()
+      response => response.json()
     ).then(
-      data =>{
+      data => {
         setBackend(data)
       }
     )
-  },[])
-console.log(setBackend,'data')
+  }, [])
+  console.log(setBackend, 'data')
   return (
-    
-    <>
-    <ButtonList/>
-    
-    </>
+
+
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<ButtonList />} />
+        <Route path="/Data/:id" element={<DeviceData />} />
+      </Routes>
+    </BrowserRouter>
 
   )
 }
