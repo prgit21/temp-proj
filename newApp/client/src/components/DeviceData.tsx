@@ -28,7 +28,7 @@ export const DeviceData = () => {
     }, [ran])
 
     const { id } = useParams();
-    console.log('ID:', id)
+
     useEffect(() => {
         axios.get(`http://localhost:5002/device/${id}`).then(
             (res) => {
