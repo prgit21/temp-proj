@@ -7,6 +7,7 @@ import { DeviceData } from './components/DeviceData';
 
 function App() {
   const [backend, setBackend] = useState([{}]);
+  console.log(backend)
 
   useEffect(() => {
     fetch('/api').then(

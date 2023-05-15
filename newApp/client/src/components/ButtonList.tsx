@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 import axios from "axios";
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // import PassComponent from './DeviceData';
 
 export const ButtonList: React.FC = () => {
@@ -13,12 +13,14 @@ export const ButtonList: React.FC = () => {
     axios.get('http://localhost:5002/lof').then(function (res) {
       setButtons(res['data'])
       const resp = res.data
+      console.log(resp)
     })
   }, [ran])
 
 
   const addMoreButton = () => {
     axios.get('http://localhost:5002/addDevice').then(function (res) {
+      console.log(res)
     })
     setRan(Math.random())
   };
@@ -33,6 +35,7 @@ export const ButtonList: React.FC = () => {
   const deleteButton = (index: string) => {
     console.log('ishaq', index);
     axios.get(`http://localhost:5002/removeDevice/${index}`).then(function (res) {
+      console.log(res)
     })
     setRan(Math.random())
   };

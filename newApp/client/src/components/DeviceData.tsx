@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -13,6 +13,7 @@ interface FetchResult {
 export const DeviceData = () => {
     const [ran, setRan] = useState(Math.random())
     const [data, setData] = useState<FetchResult>();
+    console.log(setRan)
 
     useEffect(() => {
         axios.get('http://localhost:5002/device/device-1')
